@@ -1,0 +1,7 @@
+{
+  "name": "vize-odev",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
