@@ -1,20 +1,54 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cikis()">
+        <ion-icon slot="start" name="exit-outline"></ion-icon>
+        Logout
+      </ion-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      Kullanıcı listesi
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!--  Users List -->
+  <div class="grid-group">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2">Resim</ion-col>
+        <ion-col size="2">Ad</ion-col>
+        <ion-col size="3">Soyad</ion-col>
+        <ion-col size="5">E-posta</ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
+
+  <ion-list>
+
+      <ion-item *ngFor="let item of kullanicilar">
+        <ion-avatar>
+          <img src="{{item.avatar}}" alt=""/>
+        </ion-avatar>
+        <ion-label>-{{item.first_name}}</ion-label>
+        <ion-label>{{item.last_name}}</ion-label>
+        <ion-label>{{item.email}}</ion-label>
+
+      </ion-item>
+
+  </ion-list>
+
+  <!--  Refresh Script-->
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Yenileniyor..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+
 </ion-content>

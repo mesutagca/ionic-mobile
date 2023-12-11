@@ -25,3 +25,10 @@
 #container a {
   text-decoration: none;
 }
+
+.grid-group {
+  background: var(--ion-color-danger);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}

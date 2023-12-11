@@ -1,0 +1,33 @@
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="login()" [formGroup]="uyelikBilgisi">
+    <div class="input-group">
+
+      <ion-item>
+        <ion-input type="email" label="Eposta" formControlName="email" label-placement="floating" fill="solid" clear-on-edit="true"></ion-input>
+      </ion-item>
+
+      <div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+        <span *ngIf="email.errors?.['required']">Eposta Gereklidir!</span>
+        <span *ngIf="email.errors?.['email']">Geçersiz Eposta Adresi!</span>
+      </div>
+
+      <ion-item>
+        <ion-input type="password" label="Parola" formControlName="password" label-placement="floating" fill="solid" ></ion-input>
+      </ion-item>
+
+      <div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+        <span *ngIf="password.errors?.['required']">Parola Gereklidir!</span>
+        <span *ngIf="password.errors?.['minlength']">Parola en az 6 karakter olmalıdır!</span>
+      </div>
+
+      <ion-button type="submit" expand="block" [disabled]="!uyelikBilgisi.valid">
+        Giriş
+      </ion-button>
+      <ion-button type="button" expand="block" color="light" [routerLink]="['/signup']">
+        Üye Ol
+      </ion-button>
+
+    </div>
+
+  </form>
+</ion-content>
